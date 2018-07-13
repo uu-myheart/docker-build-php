@@ -8,9 +8,9 @@ RUN apk upgrade --update \
     libc-dev \
     make \
     git \
-    && git clone https://github.com/swoole/swoole-src.git \
+    && git clone https://github.com/swoole/swoole-src.git /swoole-src \
     && ( \
-        cd swoole-src \
+        cd /swoole-src \
         && git checkout v2.2.0 \
         && phpize \
         && ./configure \
