@@ -16,8 +16,8 @@ RUN apk upgrade --update \
         && ./configure \
         && make -j$(nproc) && make install \
         ) \
-    && rm -r /swoole-src \
     && docker-php-ext-enable swoole \
+    && rm -r /swoole-src \
     && docker-php-ext-install pdo_mysql \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* 
