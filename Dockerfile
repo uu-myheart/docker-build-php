@@ -11,7 +11,7 @@ RUN apk upgrade --update \
     && git clone https://github.com/swoole/swoole-src.git /swoole-src \
     && ( \
         cd /swoole-src \
-        && git checkout v2.0.10 \
+        && git checkout v2.0.10-stable \
         && phpize \
         && ./configure \
         && make -j$(nproc) && make install \
