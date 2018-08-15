@@ -3,11 +3,7 @@ FROM php:5.6-fpm-alpine
 RUN apk upgrade --update \
     && apk add --no-cache --virtual .build-deps \
     coreutils \
-    freetype-dev \
-    libjpeg-turbo-dev \
-    libltdl \
-    libmcrypt-dev \
-    libpng-dev \
+    freetype-dev libjpeg-turbo-dev libltdl libmcrypt-dev libpng-dev \
     linux-headers \
     autoconf \
     gcc \
@@ -28,6 +24,8 @@ RUN apk upgrade --update \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
-    && apk del .build-deps
+    && apk del .build-deps \
+    && rm -rf /var/cache/apk/* \
+    && apk add --no-cache freetype libpng libjpeg-turbo libmcrypt
 
 
