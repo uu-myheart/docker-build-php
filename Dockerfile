@@ -19,5 +19,6 @@ RUN apk upgrade --update \
     && docker-php-ext-enable swoole \
     && rm -r /swoole-src \
     && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install gd \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* 
