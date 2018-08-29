@@ -1,5 +1,7 @@
 FROM php:7.2-fpm-alpine
 
+COPY php.ini /usr/local/etc/php/
+
 RUN apk upgrade --update \
     && apk add --no-cache --virtual .build-deps \
     coreutils \
