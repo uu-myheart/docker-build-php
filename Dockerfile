@@ -12,12 +12,19 @@ RUN apk upgrade --update \
     libc-dev \
     make \
     git \
+    && git clone https://github.com/redis/hiredis.git /hiredis \
+    && ( \
+        && cd /hiredis \
+        && make -j \
+        && sudo make install \
+        && sudo ldconfig \
+        ) \
     && git clone https://github.com/swoole/swoole-src.git /swoole-src \
     && ( \
         cd /swoole-src \
         && git checkout v2.0.10-stable \
         && phpize \
-        && ./configure \
+        && ./configure --enable-async-redis \
         && make -j$(nproc) && make install \
         ) \
     && docker-php-ext-enable swoole \
