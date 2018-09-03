@@ -14,7 +14,7 @@ RUN apk upgrade --update \
     git \
     && git clone https://github.com/redis/hiredis.git /hiredis \
     && ( \
-        && cd /hiredis \
+        cd /hiredis \
         && make -j \
         && sudo make install \
         && sudo ldconfig \
@@ -28,7 +28,7 @@ RUN apk upgrade --update \
         && make -j$(nproc) && make install \
         ) \
     && docker-php-ext-enable swoole \
-    && rm -r /swoole-src \
+    && rm -rf /swoole-src /hiredis \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
