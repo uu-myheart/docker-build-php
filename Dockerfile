@@ -12,6 +12,10 @@ RUN apk upgrade --update \
     libc-dev \
     make \
     git \
+    && git clone https://github.com/redis/hiredis.git /hiredis \
+    && cd /hiredis \
+    && make -j$(nproc) \
+    && make install > /dev/null 2>&1 \
     && git clone https://github.com/swoole/swoole-src.git /swoole-src \
     && ( \
         cd /swoole-src \
