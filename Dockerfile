@@ -16,8 +16,8 @@ RUN apk upgrade --update \
     && ( \
         cd /hiredis \
         && make -j \
-        && sudo make install \
-        && sudo ldconfig \
+        && make install \
+        && ldconfig \
         ) \
     && git clone https://github.com/swoole/swoole-src.git /swoole-src \
     && ( \
