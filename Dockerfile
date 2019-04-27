@@ -9,6 +9,8 @@ RUN apk upgrade --update \
     linux-headers \
     autoconf \
     gcc \
+    glibc-headers \
+    gcc-c++ \
     libc-dev \
     make \
     git \
