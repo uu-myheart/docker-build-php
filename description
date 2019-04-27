@@ -1,9 +1,6 @@
 # git
 git \
 
-# 编译swoole时候用到
-g++ \
-
 # 编译安装hiredis
 && git clone https://github.com/redis/hiredis.git /hiredis \
 && cd /hiredis \

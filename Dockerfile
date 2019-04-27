@@ -9,6 +9,7 @@ RUN apk upgrade --update \
     linux-headers \
     autoconf \
     gcc \
+    g++ \
     libc-dev \
     make \
     && pecl install swoole-4.3.3 \
