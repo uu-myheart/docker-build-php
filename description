@@ -1,0 +1,23 @@
+# git
+git \
+
+# 编译swoole时候用到
+g++ \
+
+# 编译安装hiredis
+&& git clone https://github.com/redis/hiredis.git /hiredis \
+&& cd /hiredis \
+&& make -j$(nproc) \
+&& make install > /dev/null 2>&1 \
+
+# 编译安装swoole
+&& git clone https://github.com/swoole/swoole-src.git /swoole-src \
+&& ( \
+    cd /swoole-src \
+	&& git checkout v4.3.3 \
+	&& phpize \
+	&& ./configure \
+	&& make -j$(nproc) && make install \
+	) \
+# 安装完删除源码
+&& rm -r /swoole-src \
