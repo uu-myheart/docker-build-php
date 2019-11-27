@@ -13,8 +13,9 @@ RUN apk upgrade --update \
     libc-dev \
     make \
     && pecl install swoole-4.3.3 \
+    && pecl install redis \
     && docker-php-ext-enable swoole \
-    && docker-php-ext-install pdo_mysql redis pcntl posix bcmath \
+    && docker-php-ext-install pdo_mysql pcntl posix bcmath \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
