@@ -12,9 +12,9 @@ RUN apk upgrade --update \
     g++ \
     libc-dev \
     make \
-    && pecl install swoole-4.3.3 \
+    && pecl install xdebug \
     && pecl install redis \
-    && docker-php-ext-enable swoole redis \
+    && docker-php-ext-enable xdebug redis \
     && docker-php-ext-install pdo_mysql pcntl posix bcmath zip sockets \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
