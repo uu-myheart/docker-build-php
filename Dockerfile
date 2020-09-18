@@ -14,7 +14,7 @@ RUN apk upgrade --update \
     make \
     && pecl install xdebug \
     && pecl install redis \
-    && pecl install yaf-3.2.2
+    && pecl install yaf-3.2.2 \
     && docker-php-ext-enable xdebug redis yaf \
     && docker-php-ext-install pdo_mysql pcntl posix bcmath zip sockets \
     && docker-php-ext-install -j$(nproc) iconv \
