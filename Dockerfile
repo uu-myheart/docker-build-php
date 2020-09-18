@@ -15,7 +15,8 @@ RUN apk upgrade --update \
     && pecl install xdebug \
     && pecl install redis \
     && pecl install yaf-3.2.2 \
-    && docker-php-ext-enable xdebug redis yaf \
+    && pecl install seaslog \
+    && docker-php-ext-enable xdebug redis yaf seaslog \
     && docker-php-ext-install pdo_mysql pcntl posix bcmath zip sockets \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
