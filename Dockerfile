@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.2.24-fpm-alpine
 
 COPY php.ini /usr/local/etc/php/
 
@@ -14,7 +14,8 @@ RUN apk upgrade --update \
     make \
     && pecl install xdebug \
     && pecl install redis \
-    && docker-php-ext-enable xdebug redis \
+    && pecl install yaf-3.2.2
+    && docker-php-ext-enable xdebug redis yaf \
     && docker-php-ext-install pdo_mysql pcntl posix bcmath zip sockets \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
