@@ -20,11 +20,12 @@ RUN apk upgrade --update \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
-    && cd / \
     && git clone https://github.com/swoole/sdebug.git -b sdebug_2_9 --depth=1 \
     && cd sdebug \
     && phpize && ./configure && make clean && make && make install \
     && echo zend_extension=xdebug.so > /usr/local/etc/php/conf.d/docker-php-ext-sdebug.ini \
+    && cd .. \
+    && rm -rf sdebug \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ \
