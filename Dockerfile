@@ -13,7 +13,7 @@ RUN apk upgrade --update \
     libc-dev \
     make \
     git \
-    && pecl install swoole-v4.5.8 \
+    && pecl install swoole-4.5.8 \
     && pecl install redis \
     && docker-php-ext-enable swoole redis \
     && docker-php-ext-install pdo_mysql pcntl posix bcmath zip sockets \
