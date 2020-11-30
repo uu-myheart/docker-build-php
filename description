@@ -1,7 +1,7 @@
 php:7.2.31
 
-swoole:4.5.7
+swoole:4.5.8
 
-extensions: pdo_mysql pcntl posix bcmath zip sockets gd
+extensions: pdo_mysql pcntl posix bcmath zip sockets gd sdebug
 
 composer
