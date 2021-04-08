@@ -18,7 +18,6 @@ RUN apk upgrade --update \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     && apk add --no-cache freetype libpng libjpeg-turbo libstdc++
