@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:8-fpm-alpine
 
 COPY php.ini /usr/local/etc/php/
 
@@ -12,7 +12,7 @@ RUN apk upgrade --update \
     g++ \
     libc-dev \
     make \
-    && pecl install swoole-4.3.3 \
+    && pecl install swoole \
     && docker-php-ext-enable swoole \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install -j$(nproc) iconv \
