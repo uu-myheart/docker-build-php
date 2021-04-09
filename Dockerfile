@@ -12,7 +12,6 @@ RUN apk upgrade --update \
     g++ \
     libc-dev \
     make \
-    git \
     && pecl install swoole \
     && pecl install redis \
     && docker-php-ext-enable swoole redis \
@@ -21,5 +20,5 @@ RUN apk upgrade --update \
     && docker-php-ext-install -j$(nproc) gd \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
-    && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ \
+    && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ git \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
