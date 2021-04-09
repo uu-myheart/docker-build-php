@@ -20,4 +20,5 @@ RUN apk upgrade --update \
     && docker-php-ext-install -j$(nproc) gd \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
-    && apk add --no-cache freetype libpng libjpeg-turbo libstdc++
+    && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ \
+    && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
