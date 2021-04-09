@@ -12,6 +12,7 @@ RUN apk upgrade --update \
     g++ \
     libc-dev \
     make \
+    git \
     && pecl install swoole \
     && pecl install redis \
     && docker-php-ext-enable swoole redis \
