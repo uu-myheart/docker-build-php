@@ -12,6 +12,7 @@ RUN apk upgrade --update \
     g++ \
     libc-dev \
     make \
+    git \
     && curl -L https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o /usr/local/bin/install-php-extensions \
     && chmod +x /usr/local/bin/install-php-extensions \
     && install-php-extensions swoole redis gd pdo_mysql @composer \
