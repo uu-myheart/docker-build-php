@@ -2,6 +2,8 @@ FROM php:7.4-cli-alpine
 
 COPY php.ini /usr/local/etc/php/
 
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
 RUN apk upgrade --update \
     && apk add --no-cache --virtual .build-deps \
     coreutils \
@@ -12,12 +14,7 @@ RUN apk upgrade --update \
     g++ \
     libc-dev \
     make \
-    && pecl install swoole \
-    && pecl install redis \
-    && docker-php-ext-enable swoole redis \
-    && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install -j$(nproc) iconv \
-    && docker-php-ext-install -j$(nproc) gd \
+    && install-php-extensions swoole redis gd pdo_mysql \
     && git clone https://github.com/swoole/sdebug.git -b sdebug_2_9 --depth=1 \
     && cd sdebug \
     && phpize && ./configure && make clean && make && make install \
