@@ -1,6 +1,6 @@
-php:7.2.31
+php:7.2.34
 
-swoole:4.5.8
+swoole:4.6.7
 
 extensions: pdo_mysql pcntl posix bcmath zip sockets gd sdebug
 

@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.2.34-fpm-alpine
 
 COPY php.ini /usr/local/etc/php/
 
@@ -13,7 +13,7 @@ RUN apk upgrade --update \
     libc-dev \
     make \
     git \
-    && pecl install swoole \
+    && pecl install swoole-4.6.7 \
     && pecl install redis \
     && docker-php-ext-enable swoole redis \
     && docker-php-ext-install pdo_mysql pcntl posix bcmath zip sockets \
