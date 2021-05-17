@@ -18,6 +18,11 @@ RUN apk upgrade --update \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-install -j$(nproc) gd \
+    && git clone https://github.com/swoole/sdebug.git -b sdebug_2_9 --depth=1 \
+    && cd sdebug \
+    && phpize && ./configure && make clean && make && make install \
+    && cd .. \
+    && rm -rf sdebug \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
     && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ git \
