@@ -23,4 +23,4 @@ RUN apk upgrade --update \
     && rm -rf sdebug \
     && apk del .build-deps \
     && rm -rf /var/cache/apk/* \
-    && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ git
+    && apk add --no-cache freetype libpng libjpeg-turbo libstdc++ git htop
